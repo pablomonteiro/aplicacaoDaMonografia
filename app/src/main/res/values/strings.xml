@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Aplicação da Monografia</string>
+    <string name="campo_nome">Nome:</string>
+    <string name="campo_telefone">Telefone:</string>
+    <string name="campo_cep">CEP:</string>
+    <string name="campo_uf">UF:</string>
+    <string name="campo_cidade">Cidade:</string>
+    <string name="campo_bairro">Bairro:</string>
+    <string name="campo_logradouro">Logradouro:</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_limpar">Limpar</string>
+</resources>
