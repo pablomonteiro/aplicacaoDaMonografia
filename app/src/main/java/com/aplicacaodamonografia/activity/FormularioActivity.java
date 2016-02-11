@@ -1,5 +1,6 @@
 package com.aplicacaodamonografia.activity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,12 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
+        preparaAcaoDoBotaoPesquisaDeCep();
+        preparaAcaoDoBotaoLimpar();
+        preparaAcaoDoBotaoConfirmar();
+    }
 
+    private void preparaAcaoDoBotaoPesquisaDeCep() {
         Button btnPesquisaCep = (Button) findViewById(R.id.btn_pesquisar);
         btnPesquisaCep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +42,26 @@ public class FormularioActivity extends AppCompatActivity {
                 new ConsultaDeCep().execute(cep);
             }
         });
+    }
 
+    private void preparaAcaoDoBotaoConfirmar() {
+        Button btnConfirmar = (Button) findViewById(R.id.confirmar);
+        btnConfirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentResult = new Intent();
+                intentResult.putExtra("nomeDoUsuario", ((TextView) findViewById(R.id.nome)).getText().toString());
+                intentResult.putExtra("telefoneDoUsuario", ((TextView) findViewById(R.id.telefone)).getText().toString());
+                intentResult.putExtra("cidadeDoUsuario", ((TextView) findViewById(R.id.cidade)).getText().toString());
+                intentResult.putExtra("ufDoUsuario", ((TextView) findViewById(R.id.uf)).getText().toString());
+                intentResult.putExtra("bairroDoUsuario", ((TextView) findViewById(R.id.bairro)).getText().toString());
+                setResult(RESULT_OK, intentResult);
+                finish();
+            }
+        });
+    }
+
+    private void preparaAcaoDoBotaoLimpar() {
         Button btnLimpar = (Button) findViewById(R.id.limpar);
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override

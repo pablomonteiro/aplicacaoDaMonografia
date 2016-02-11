@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Aplicação da Monografia</string>
+    <string name="app_include_user">Inclusão de Usuário</string>
     <string name="campo_nome">Nome:</string>
     <string name="campo_telefone">Telefone:</string>
     <string name="campo_cep">CEP:</string>
