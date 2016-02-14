@@ -1,5 +1,9 @@
 package com.aplicacaodamonografia.model;
 
+import android.util.Log;
+
+import com.aplicacaodamonografia.exception.EnderecoLoadException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +51,7 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public static Endereco fromJson(String json) {
+    public static Endereco fromJson(String json) throws EnderecoLoadException {
         try {
             JSONObject object = new JSONObject(json);
             Endereco endereco = new Endereco();
@@ -57,8 +61,8 @@ public class Endereco {
             endereco.setLogradouro(object.getString("logradouro"));
             return endereco;
         } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
+            Log.e("ERRO_ENDERECO", e.getMessage());
+            throw new EnderecoLoadException("Erro ao converter endereço.");
         }
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.aplicacaodamonografia.R;
 import com.aplicacaodamonografia.exception.ConnectionException;
+import com.aplicacaodamonografia.exception.EnderecoLoadException;
 import com.aplicacaodamonografia.model.Endereco;
 import com.aplicacaodamonografia.webconnection.Connection;
 
@@ -102,8 +103,12 @@ public class FormularioActivity extends AppCompatActivity {
             if(MSG_EXCEPTION.equals(result)) {
                 Toast.makeText(FormularioActivity.this, MSG_ERROR_CONNECT_FAIL, Toast.LENGTH_LONG).show();
             } else {
-                Endereco endereco = Endereco.fromJson(result);
-                preencheInformacoesDoEndereco(endereco);
+                try {
+                    Endereco endereco = Endereco.fromJson(result);
+                    preencheInformacoesDoEndereco(endereco);
+                } catch(EnderecoLoadException e) {
+                    Toast.makeText(FormularioActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         }
 
