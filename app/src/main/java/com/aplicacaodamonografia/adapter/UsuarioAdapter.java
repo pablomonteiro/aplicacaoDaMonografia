@@ -32,15 +32,19 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
         View layout = inflate.inflate(idResource, parent, false);
         TextView nomeDoUsuario = (TextView) layout.findViewById(R.id.user_name);
         TextView telefoneDoUsuario = (TextView) layout.findViewById(R.id.user_phone);
-        TextView cidadeDoUsuario = (TextView) layout.findViewById(R.id.user_city);
-        TextView estadoDoUsuario = (TextView) layout.findViewById(R.id.user_state);
-        TextView bairroDoUsuario = (TextView) layout.findViewById(R.id.user_neighbor);
         Usuario usuario = getItem(position);
         nomeDoUsuario.setText(usuario.getNome());
         telefoneDoUsuario.setText(usuario.getTelefone());
-        cidadeDoUsuario.setText(usuario.getEndereco().getCidade());
-        estadoDoUsuario.setText(usuario.getEndereco().getUf());
-        bairroDoUsuario.setText(usuario.getEndereco().getBairro());
+        if(usuario.getEndereco() != null) {
+            TextView cidadeDoUsuario = (TextView) layout.findViewById(R.id.user_city);
+            TextView estadoDoUsuario = (TextView) layout.findViewById(R.id.user_state);
+            TextView bairroDoUsuario = (TextView) layout.findViewById(R.id.user_neighbor);
+            TextView logradouroDoUsuario = (TextView) layout.findViewById(R.id.user_street);
+            cidadeDoUsuario.setText(usuario.getEndereco().getCidade());
+            estadoDoUsuario.setText(usuario.getEndereco().getUf());
+            bairroDoUsuario.setText(usuario.getEndereco().getBairro());
+            logradouroDoUsuario.setText(usuario.getEndereco().getLogradouro());
+        }
         return layout;
     }
 }
