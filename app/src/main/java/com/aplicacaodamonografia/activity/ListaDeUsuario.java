@@ -36,6 +36,25 @@ public class ListaDeUsuario extends AppCompatActivity {
     private void init() {
         listaDeDados = (ListView) findViewById(R.id.lista_de_dados);
         listaDeUsuario = new ArrayList<Usuario>();
+        preencheUsuarioTeste("Usuário 1", "988369900");
+        preencheUsuarioTeste("Usuário 2", "988369901");
+    }
+
+    private void preencheUsuarioTeste(String nome, String telefone) {
+        Usuario usuario = new Usuario();
+        usuario.setNome(nome);
+        usuario.setTelefone(telefone);
+        usuario.setEndereco(preencheEnderecoPadrao());
+        listaDeUsuario.add(usuario);
+    }
+
+    private Endereco preencheEnderecoPadrao() {
+        Endereco end = new Endereco();
+        end.setUf("PB");
+        end.setBairro("Centro");
+        end.setCidade("Patos");
+        end.setLogradouro("Rua 1");
+        return end;
     }
 
     private void preparaToolbar() {
@@ -64,6 +83,7 @@ public class ListaDeUsuario extends AppCompatActivity {
             endereco.setCidade(data.getStringExtra("cidadeDoUsuario"));
             endereco.setUf(data.getStringExtra("ufDoUsuario"));
             endereco.setBairro(data.getStringExtra("bairroDoUsuario"));
+            endereco.setLogradouro(data.getStringExtra("logradouroDoUsuario"));
             usuario.setEndereco(endereco);
             listaDeUsuario.add(usuario);
             preencheLista();
