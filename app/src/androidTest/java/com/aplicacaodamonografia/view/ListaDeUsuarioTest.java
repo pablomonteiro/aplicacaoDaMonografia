@@ -53,7 +53,7 @@ public class ListaDeUsuarioTest {
 
     @Test
     public void deveriaVerificarConteudoDaSegundaLinha() {
-        verificaLinhaDaLista(1, "Usuário 2", "988369902");
+        verificaLinhaDaLista(1, "Usuário 2", "988369901");
     }
 
     private void verificaLinhaDaLista(int posicao, String nome, String telefone) {
