@@ -1,11 +1,9 @@
 package com.aplicacaodamonografia.view;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.AndroidTestCase;
-import android.test.AndroidTestRunner;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import com.aplicacaodamonografia.activity.ListaDeUsuario;
+import com.aplicacaodamonografia.activity.ListaDeUsuarioActivity;
 
 import junit.framework.Assert;
 
@@ -24,8 +22,8 @@ public class ListaDeUsuarioTest extends ActivityInstrumentationTestCase2 {
 
 
     @Rule
-    public ActivityTestRule<ListaDeUsuario> mActivityRule =
-            new ActivityTestRule<>(ListaDeUsuario.class);
+    public ActivityTestRule<ListaDeUsuarioActivity> mActivityRule =
+            new ActivityTestRule<>(ListaDeUsuarioActivity.class);
 
     public void verificaListaPreenchida() {
 //        onVi

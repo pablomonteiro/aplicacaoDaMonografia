@@ -46,7 +46,7 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     private void preparaAcaoDoBotaoConfirmar() {
-        Button btnConfirmar = (Button) findViewById(R.id.confirmar);
+        Button btnConfirmar = (Button) findViewById(R.id.btn_confirmar);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
