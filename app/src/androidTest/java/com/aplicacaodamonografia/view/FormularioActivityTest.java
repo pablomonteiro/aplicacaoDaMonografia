@@ -38,7 +38,7 @@ public class FormularioActivityTest {
         assertPreencimentoDoEndereco();
     }
 
-    @Test
+//    @Test
     public void deveriaIncluirNovoUsuario() {
         onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
         onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
