@@ -50,6 +50,10 @@ public class FormularioActivityTest {
             onView(withId(R.id.btn_pesquisar)).perform(click());
             assertPreencimentoDoEndereco();
             onView(withId(R.id.btn_confirmar)).perform(click());
+
+            // Verificar nesse artigo pra tentar resolver problema no travis ci
+            // http://baiduhix.blogspot.com.br/2015/07/android-espresso-test-with-viewlist.html
+
             //        onView(isAssignableFrom(Toolbar.class))
             //                .check(matches(Util.withToolbarTitle(
             //                        Is.<CharSequence>is("Inclusão de Usuário"))));
