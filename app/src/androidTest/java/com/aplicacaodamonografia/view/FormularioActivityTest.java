@@ -40,9 +40,9 @@ public class FormularioActivityTest {
 
     @Test
     public void deveriaIncluirNovoUsuario() {
-        onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
-        onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
-        onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+        onView(withId(R.id.nome)).perform(typeText("Usuario 3"));
+        onView(withId(R.id.telefone)).perform(typeText("999998855"));
+        onView(withId(R.id.cep)).perform(typeText("60830005"));
         onView(withId(R.id.btn_pesquisar)).perform(click());
         assertPreencimentoDoEndereco();
         onView(withId(R.id.btn_confirmar)).perform(click());
