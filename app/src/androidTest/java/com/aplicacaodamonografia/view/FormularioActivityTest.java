@@ -40,15 +40,23 @@ public class FormularioActivityTest {
 
     @Test
     public void deveriaIncluirNovoUsuario() {
-        onView(withId(R.id.nome)).perform(typeText("Usuario 3"));
-        onView(withId(R.id.telefone)).perform(typeText("999998855"));
-        onView(withId(R.id.cep)).perform(typeText("60830005"));
-        onView(withId(R.id.btn_pesquisar)).perform(click());
-        assertPreencimentoDoEndereco();
-        onView(withId(R.id.btn_confirmar)).perform(click());
-//        onView(isAssignableFrom(Toolbar.class))
-//                .check(matches(Util.withToolbarTitle(
-//                        Is.<CharSequence>is("Inclusão de Usuário"))));
+        try {
+            onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.btn_pesquisar)).perform(click());
+            assertPreencimentoDoEndereco();
+            onView(withId(R.id.btn_confirmar)).perform(click());
+            //        onView(isAssignableFrom(Toolbar.class))
+            //                .check(matches(Util.withToolbarTitle(
+            //                        Is.<CharSequence>is("Inclusão de Usuário"))));
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void assertPreencimentoDoEndereco() {
