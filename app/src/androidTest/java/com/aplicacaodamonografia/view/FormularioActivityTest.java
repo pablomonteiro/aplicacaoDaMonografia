@@ -5,6 +5,11 @@ import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 import static android.support.test.espresso.assertion.ViewAssertions.*;
 
+import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.action.GeneralClickAction;
+import android.support.test.espresso.action.GeneralLocation;
+import android.support.test.espresso.action.Press;
+import android.support.test.espresso.action.Tap;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.Toolbar;
@@ -40,27 +45,26 @@ public class FormularioActivityTest {
 
     @Test
     public void deveriaIncluirNovoUsuario() {
-        try {
-            onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
-            Thread.sleep(1000);
-            onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
-            Thread.sleep(1000);
-            onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
-            Thread.sleep(1000);
-            onView(withId(R.id.btn_pesquisar)).perform(click());
-            assertPreencimentoDoEndereco();
-            onView(withId(R.id.btn_confirmar)).perform(click());
+        onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
+        onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
+        onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+        onView(withId(R.id.btn_pesquisar)).perform(click());
+        assertPreencimentoDoEndereco();
+        onView(withId(R.id.btn_confirmar))
+                                          .perform(clickButton());
 
-            // Verificar nesse artigo pra tentar resolver problema no travis ci
-            // http://baiduhix.blogspot.com.br/2015/07/android-espresso-test-with-viewlist.html
+        // Verificar nesse artigo pra tentar resolver problema no travis ci
+        // http://baiduhix.blogspot.com.br/2015/07/android-espresso-test-with-viewlist.html
 
-            //        onView(isAssignableFrom(Toolbar.class))
-            //                .check(matches(Util.withToolbarTitle(
-            //                        Is.<CharSequence>is("Inclusão de Usuário"))));
+        //        onView(isAssignableFrom(Toolbar.class))
+        //                .check(matches(Util.withToolbarTitle(
+        //                        Is.<CharSequence>is("Inclusão de Usuário"))));
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+    }
+
+    private static ViewAction clickButton() {
+        return actionWithAssertions(new ButtonGeneralClickAction(GeneralLocation.CENTER, Tap.SINGLE, Press.FINGER, null));
     }
 
     private void assertPreencimentoDoEndereco() {
