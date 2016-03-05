@@ -37,8 +37,7 @@ public class FormularioActivityTest {
 
     @Test
     public void deveriaBuscarCep() {
-        onView(withId(R.id.cep))
-                .perform(typeText("60830005"), closeSoftKeyboard());
+        onView(withId(R.id.cep)).perform(typeText("60830005"));
         onView(withId(R.id.btn_pesquisar)).perform(scrollTo(), click());
         assertPreencimentoDoEndereco();
     }
@@ -47,13 +46,13 @@ public class FormularioActivityTest {
     public void deveriaIncluirNovoUsuario() {
 
         try {
-            onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
+            onView(withId(R.id.nome)).perform(typeText("Usuario 3"));
             Thread.sleep(1000);
-            onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
+            onView(withId(R.id.telefone)).perform(typeText("999998855"));
             Thread.sleep(1000);
-            onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+            onView(withId(R.id.cep)).perform(typeText("60830005"));
             Thread.sleep(1000);
-            onView(withId(R.id.btn_pesquisar)).perform(click());
+            onView(withId(R.id.btn_pesquisar)).perform(scrollTo(), click());
             Thread.sleep(1000);
             assertPreencimentoDoEndereco();
             onView(withId(R.id.btn_confirmar)).perform(scrollTo(), clickButton());
