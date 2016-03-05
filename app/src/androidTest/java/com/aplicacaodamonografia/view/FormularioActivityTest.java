@@ -46,16 +46,16 @@ public class FormularioActivityTest {
     public void deveriaIncluirNovoUsuario() {
 
 //        try {
-            onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
+            onView(withId(R.id.nome)).check(matches(isDisplayed())).perform(typeText("Usuario 3"), closeSoftKeyboard());
 //            Thread.sleep(1000);
-            onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
+            onView(withId(R.id.telefone)).check (matches(isDisplayed())).perform(typeText("999998855"), closeSoftKeyboard());
 //            Thread.sleep(1000);
-            onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+            onView(withId(R.id.cep)).check(matches(isDisplayed())).perform(typeText("60830005"), closeSoftKeyboard());
 //            Thread.sleep(1000);
-            onView(withId(R.id.btn_pesquisar)).perform(scrollTo(), click());
+            onView(withId(R.id.btn_pesquisar)).check(matches(isDisplayed())).perform(scrollTo(), click());
 //            Thread.sleep(1000);
             assertPreencimentoDoEndereco();
-            onView(withId(R.id.btn_confirmar)).perform(scrollTo(), clickButton());
+            onView(withId(R.id.btn_confirmar)).check (matches(isDisplayed())).perform(scrollTo(), clickButton());
 //        } catch(InterruptedException e) {
 //            e.printStackTrace();
 //        }
