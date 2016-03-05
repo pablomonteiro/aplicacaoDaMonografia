@@ -61,14 +61,6 @@ public class FormularioActivityTest {
             e.printStackTrace();;
         }
 
-        // Verificar nesse artigo pra tentar resolver problema no travis ci
-        // http://baiduhix.blogspot.com.br/2015/07/android-espresso-test-with-viewlist.html
-
-        //        onView(isAssignableFrom(Toolbar.class))
-        //                .check(matches(Util.withToolbarTitle(
-        //                        Is.<CharSequence>is("Inclusão de Usuário"))));
-
-
     }
 
     private static ViewAction clickButton() {
