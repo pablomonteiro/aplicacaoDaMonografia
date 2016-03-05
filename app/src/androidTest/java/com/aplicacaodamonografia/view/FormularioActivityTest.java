@@ -45,13 +45,21 @@ public class FormularioActivityTest {
 
     @Test
     public void deveriaIncluirNovoUsuario() {
-        onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
-        onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
-        onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
-        onView(withId(R.id.btn_pesquisar)).perform(click());
-        assertPreencimentoDoEndereco();
-        onView(withId(R.id.btn_confirmar))
-                                          .perform(clickButton());
+
+        try {
+            onView(withId(R.id.nome)).perform(typeText("Usuario 3"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.telefone)).perform(typeText("999998855"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.cep)).perform(typeText("60830005"), closeSoftKeyboard());
+            Thread.sleep(1000);
+            onView(withId(R.id.btn_pesquisar)).perform(click());
+            Thread.sleep(1000);
+            assertPreencimentoDoEndereco();
+            onView(withId(R.id.btn_confirmar)).perform(clickButton());
+        } catch(InterruptedException e) {
+            e.printStackTrace();;
+        }
 
         // Verificar nesse artigo pra tentar resolver problema no travis ci
         // http://baiduhix.blogspot.com.br/2015/07/android-espresso-test-with-viewlist.html
