@@ -39,7 +39,7 @@ public class FormularioActivityTest {
     public void deveriaBuscarCep() {
         onView(withId(R.id.cep))
                 .perform(typeText("60830005"), closeSoftKeyboard());
-        onView(withId(R.id.btn_pesquisar)).perform(click());
+        onView(withId(R.id.btn_pesquisar)).perform(scrollTo(), click());
         assertPreencimentoDoEndereco();
     }
 
@@ -56,9 +56,9 @@ public class FormularioActivityTest {
             onView(withId(R.id.btn_pesquisar)).perform(click());
             Thread.sleep(1000);
             assertPreencimentoDoEndereco();
-            onView(withId(R.id.btn_confirmar)).perform(clickButton());
+            onView(withId(R.id.btn_confirmar)).perform(scrollTo(), clickButton());
         } catch(InterruptedException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
 
     }
