@@ -67,7 +67,7 @@ public class FormularioActivityTest {
     }
 
     private void assertPreencimentoDoEndereco() {
-        onView(withId(R.id.logradouro)).check(matches(withText("Washington Soares")));
+        onView(withId(R.id.logradouro)).check(matches(withText("Washington Soare")));
         onView(withId(R.id.bairro)).check(matches(withText("Alagadiço Novo")));
         onView(withId(R.id.uf)).check(matches(withText("CE")));
         onView(withId(R.id.cidade)).check(matches(withText("Fortaleza")));
